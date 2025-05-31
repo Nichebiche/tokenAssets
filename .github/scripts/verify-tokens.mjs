@@ -31,7 +31,7 @@ function validate(directory) {
 			if (name.startsWith('_')) {
 				continue;
 			}
-			if (name.startsWith('0x')) {
+			if (name.startsWith('0x') || file.includes('tokens/1151111081099710/')) {
 				if (!fs.existsSync(path.join(file, 'logo-128.png'))) {
 					console.error(`Error: "${file}" is missing logo-128.png`);
 					allValid = false;
@@ -49,7 +49,8 @@ function validate(directory) {
 						svgValue.includes(`data:image/png;base64`) ||
 						svgValue.includes(`data:img/png;base64`) ||
 						svgValue.includes(`data:image/jpeg;base64`) ||
-						svgValue.includes(`data:img/jpeg;base64`)
+						svgValue.includes(`data:img/jpeg;base64`) ||
+						svgValue.includes(`href="http`)
 					) {
 						console.error(`Error: "${file}" logo.svg contains base64 encoded image.`);
 						allValid = false;

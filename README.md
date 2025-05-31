@@ -15,14 +15,16 @@ https://assets.smold.app/api/token/[chainID]/[tokenAddress]/[fileName].[ext]
 
 ## Usage
 
-It's recommanded to use PNG files. They are smaller and faster to load, come in two sizes (32x32 and 128x128) and are supported by all browsers.
+It's recommended to use PNG files. They are smaller and faster to load, come in two sizes (32x32 and 128x128) and are supported by all browsers.
 SVG files are also available, but they are larger and slower to load and can hurt performances for poorly optimized assets or very complex ones (ex: curvefi icon).
 
 ## (Self) Hosting
 
 The repo comes with two different server systems in `_config`:
-- a `golang` server, that serve the assets from github
-- a `node` server, configured to work with Vercel. If you want to self host, here is the config we are using:
+
+-   a `golang` server, that serve the assets from github
+-   a `node` server, configured to work with Vercel. If you want to self host, here is the config we are using:
+
 ```
 Framework Preset: Next.js
 Build Command: yarn --cwd _config/nodeAPI/ run build
@@ -33,6 +35,35 @@ Node Version: 18.x
 Environment Variables: None
 ```
 
+## Supported chains
+
+-   1: Ethereum
+-   10: Optimism
+-   56: BSC
+-   100: Gnosis
+-   130: Unichain
+-   137: Polygon
+-   223: BSquared
+-   250: Fantom
+-   252: Fraxtal
+-   957: Derive
+-   1101: Polygon zkEVM
+-   1135: Lisk
+-   1750: Metal L2
+-   1868: Soneium
+-   1923: Swellchain
+-   5330: Superseed
+-   8453: Base
+-   34443: Mode
+-   42161: Arbitrum
+-   42220: Celo
+-   43114: Avalanche
+-   57073: Ink
+-   60808: BOB
+-   81457: Blast
+-   98866: Plume
+-   1380012617: Rari
+-   1151111081099710: Solana
 
 ## Contributing
 
@@ -43,8 +74,8 @@ https://cloudconvert.com/svg-to-png to convert the SVG file into the PNGs.
 With Inkscape you can run:
 
 ```
-$ inkscape -w 128 -h 128 logo.svg -e logo-18.png
-$ inkscape -w 32 -h 32 logo.svg -e logo-32.png
+$ inkscape -w 128 -h 128 logo.svg -o logo-128.png
+$ inkscape -w 32 -h 32 logo.svg -o logo-32.png
 ```
 
 You can also use `rsvg-convert` from the [`librsvg2`](https://formulae.brew.sh/formula/librsvg) package:
@@ -57,7 +88,7 @@ $ rsvg-convert -h 32 logo.svg > logo-32.png && rsvg-convert -h 128 logo.svg > lo
 ```
 
 Once ready, create a new directory with the chain ID, or use the existing one,
-and create a new directory for the token address (in lower case) you are adding.
+and create a new directory for the token address (in lower case for EVM chains, or case sensitive for Solana) you are adding.
 
 Fill-in the details when creating the pull-request, and we'll merge it shortly!
 
